@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TextArea Backup</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <span class="title">TextArea Backup</span>
+    <a id="btn-options" href="#" title="設定を開く">⚙</a>
+  </header>
+
+  <div class="site-row">
+    <span id="site-label" class="site-label"></span>
+    <label class="toggle">
+      <input type="checkbox" id="toggle-site" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="actions">
+    <button id="btn-save">今すぐ保存</button>
+  </div>
+
+  <div id="status-msg" class="status-msg hidden"></div>
+
+  <div id="backup-list-section">
+    <div class="section-title">このページのバックアップ</div>
+    <div id="no-backups" class="empty-msg hidden">バックアップはありません</div>
+    <ul id="backup-list"></ul>
+  </div>
+
+  <script src="../shared/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TextArea Backup - 設定</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>TextArea Backup 設定</h1>
+
+    <!-- タブナビ -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="backups">バックアップ一覧</button>
+      <button class="tab-btn" data-tab="sites">サイト管理</button>
+      <button class="tab-btn" data-tab="general">全般設定</button>
+    </nav>
+
+    <!-- ========== バックアップ一覧タブ ========== -->
+    <section id="tab-backups" class="tab-content active">
+      <div class="toolbar">
+        <input type="text" id="search-input" placeholder="URLやテキストで絞り込み..." />
+        <button id="btn-delete-all" class="btn btn-danger">全削除</button>
+      </div>
+
+      <div id="backups-empty" class="empty-msg hidden">バックアップはありません</div>
+      <div id="backups-container"></div>
+    </section>
+
+    <!-- ========== サイト管理タブ ========== -->
+    <section id="tab-sites" class="tab-content hidden">
+      <div id="sites-empty" class="empty-msg hidden">記録されたサイトはありません</div>
+      <table id="sites-table" class="sites-table hidden">
+        <thead>
+          <tr>
+            <th>オリジン</th>
+            <th>有効</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="sites-tbody"></tbody>
+      </table>
+    </section>
+
+    <!-- ========== 全般設定タブ ========== -->
+    <section id="tab-general" class="tab-content hidden">
+      <div class="settings-group">
+        <h2>保持ポリシー</h2>
+        <label class="setting-row">
+          <span>要素ごとの最大保持件数</span>
+          <input type="number" id="max-count" min="1" max="500" />
+          <span>件</span>
+        </label>
+        <label class="setting-row">
+          <span>最大保持期間</span>
+          <input type="number" id="max-days" min="1" max="365" />
+          <span>日</span>
+        </label>
+        <button id="btn-save-settings" class="btn btn-primary">保存</button>
+        <span id="settings-saved" class="inline-msg hidden">保存しました</span>
+      </div>
+
+      <div class="settings-group">
+        <h2>データ管理</h2>
+        <div class="button-row">
+          <button id="btn-export" class="btn btn-secondary">JSONエクスポート</button>
+          <label class="btn btn-secondary btn-file">
+            JSONインポート（マージ）
+            <input type="file" id="import-merge" accept=".json" style="display:none" />
+          </label>
+          <label class="btn btn-secondary btn-file">
+            JSONインポート（上書き）
+            <input type="file" id="import-overwrite" accept=".json" style="display:none" />
+          </label>
+        </div>
+        <span id="import-msg" class="inline-msg hidden"></span>
+      </div>
+    </section>
+  </div>
+
+  <script src="../shared/storage.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
